@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SampleInfoServiceModel>
+
+@{
+    ViewBag.Title = "All Samples";
+}
+
+@section SamplesStyles {
+    <link href="~/css/samples/all.css" rel="stylesheet" />
+}
+
+<div class="samples-page-container">
+    <h1 class="heading">All Samples</h1>
+
+    <div class="all-samples">
+        @foreach (var sample in Model)
+        {
+            <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@sample.Id" class="sample">
+                <p>Creation: <span>@sample.Creation</span></p>
+                <p>Last Edit date: <span>@sample.LastEdit</span></p>
+            </a>
+        }
+    </div>
+</div>

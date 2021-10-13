@@ -1,0 +1,30 @@
+﻿<header class="header-container">
+    <nav class="nav-container">
+        <div class="btns">
+            <div class="header-link-btn-container">
+                <a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="" class="header-link-btn"><span>Home</span></a>
+            </div>
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <div class="header-link-btn-container">
+                    <a asp-area="Identity" asp-page="/Account/Login" class="header-link-btn"><span>Login</span></a>
+                </div>
+                <div class="header-link-btn-container">
+                    <a asp-area="Identity" asp-page="/Account/Register" class="header-link-btn"><span>Registration</span></a>
+                </div>
+            }
+            else
+            {
+                <div class="header-link-btn-container">
+                    <a asp-area="" asp-controller="Samples" asp-action="All" class="header-link-btn"><span>Samples</span></a>
+                </div>
+                <div class="header-link-btn-container">
+                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new {area = string.Empty, id=string.Empty})">
+                        <button type="submit" class="header-link-btn"><span>Logout</span></button>
+                    </form>
+                </div>
+            }
+        </div>
+    </nav>
+</header>
