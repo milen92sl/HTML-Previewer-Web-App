@@ -18,5 +18,4 @@ An application that preview textarea-code as HTML. The different HTML samples ar
 1. Just check your connection-string for the Database and run the app if it's fit in your configurations.
 
 ## How it looks:
-![HTML-Previewer-Image](https://user-images.githubusercontent.com/58393766/137405561-2bb85436-2a71-44ca-80a5-1082132ea999.png)
-
+![Page-design_picture](https://user-images.githubusercontent.com/58393766/137407089-ef11a192-5c41-4e8a-a406-45f64a1372ca.png)
