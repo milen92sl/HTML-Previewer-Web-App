@@ -15,5 +15,5 @@ An application that preview textarea-code as HTML. The different HTML samples ar
 
 ## How to work with the app:
 
-1. Just check ur connection-string for the Database and run the app if it's fit in your configurations.
+1. Just check your connection-string for the Database and run the app if it's fit in your configurations.
 
