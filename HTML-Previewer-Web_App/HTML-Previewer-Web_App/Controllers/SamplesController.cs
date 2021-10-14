@@ -34,21 +34,21 @@
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost] 
         public IActionResult Save(SampleFormModel sample)
         {
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessageKey] = InvalidSampleContent;
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
+            }
+
             var size = this.convert
                 .ConvertBytesToMegabytes(sample.Code);
 
             if (size > MaxCodeSizeInMb)
             {
                 TempData[ErrorMessageKey] = InvalidSampleSize;
-                return RedirectToAction("Index", "Home", new { area = string.Empty });
-            }
-
-            if (!ModelState.IsValid)
-            {
-                TempData[ErrorMessageKey] = InvalidSampleContent;
                 return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
 
@@ -72,6 +72,13 @@
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                TempData[ErrorMessageKey] = InvalidSampleContent;
+
+                return RedirectToAction("Index", "Home", new { area = string.Empty });
+            }
+
             var size = this.convert
                 .ConvertBytesToMegabytes(sample.Code);
 
@@ -81,19 +88,13 @@
                 return RedirectToAction("Index", "Home", new { area = string.Empty });
             }
 
-            if (!ModelState.IsValid)
-            {
-                TempData[ErrorMessageKey] = InvalidSampleContent;
-
-                return RedirectToAction("Index", "Home", new { area = string.Empty });
-            }
-
             this.samples
                 .Edit(sample.Id, sample.Code, User.Id());
 
             TempData[SuccessMessageKey] = SuccessfulEditSample;
 
             return RedirectToAction("All", "Samples", new { area = string.Empty });
+
         }
     }
 }

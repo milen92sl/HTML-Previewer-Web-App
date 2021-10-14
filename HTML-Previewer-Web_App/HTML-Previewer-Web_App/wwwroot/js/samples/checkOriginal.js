@@ -2,7 +2,7 @@
     const messageContainer = document.querySelector('.check-original-message');
     const message = document.querySelector('.check-original-message > p');
 
-    const expirationTime = 2000;
+    const expirationTime = 4000;
 
     const check = () => {
         const id = document.getElementById('sample-id').value;

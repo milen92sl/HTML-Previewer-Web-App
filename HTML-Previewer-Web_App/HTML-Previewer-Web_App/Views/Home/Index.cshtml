@@ -1,6 +1,8 @@
 ﻿@model SampleFormModel
 
-@{ ViewBag.Title = "Check your HTML code"; }
+@{
+    ViewBag.Title = "Render your HTML code";
+}
 
 @section IndexStyles {
     <link href="~/css/home/index.css" rel="stylesheet" />
@@ -14,8 +16,11 @@
             <div class="input-sample-container">
                 <input asp-for="Id" id="sample-id" class="hide" />
 
-                <label asp-for="Code">Write your code here:</label>
-                <textarea asp-for="Code" id="code"></textarea>
+                <div class="form-container">
+                    <label asp-for="Code">Write your code here:</label>
+                    <textarea asp-for="Code" id="code"></textarea>
+                </div>
+
             </div>
             <div class="result-container">
                 <p class="result-paragraph">Result:</p>
@@ -29,7 +34,8 @@
 
         @if (Model != null)
         {
-<span id="check-button" type="button" class="btn">Check original</span>}
+            <span id="check-button" type="button" class="btn">Check original</span>
+        }
     </form>
 </div>
 

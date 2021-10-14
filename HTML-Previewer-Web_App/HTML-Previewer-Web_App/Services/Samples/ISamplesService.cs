@@ -1,13 +1,16 @@
 ﻿namespace HTML_Previewer_Web_App.Services.Samples
 {
-    using HTML_Previewer_Web_App.Services.Samples.Models;
     using System.Collections.Generic;
+    using HTML_Previewer_Web_App.Services.Samples.Models;
 
     public interface ISamplesService
     {
         void Save(string code, string userId);
 
-        void Edit(string sampleId, string code, string userId);
+        void Edit(
+            string sampleId,
+            string code,
+            string userId);
 
         bool IsSampleExist(string sampleId, string userId);
 

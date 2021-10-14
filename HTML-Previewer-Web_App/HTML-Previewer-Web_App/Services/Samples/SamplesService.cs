@@ -1,11 +1,11 @@
 ﻿namespace HTML_Previewer_Web_App.Services.Samples
 {
+    using System;
+    using System.Linq;
     using HTML_Previewer_Web_App.Data;
+    using System.Collections.Generic;
     using HTML_Previewer_Web_App.Data.Models;
     using HTML_Previewer_Web_App.Services.Samples.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class SamplesService : ISamplesService
     {
@@ -16,31 +16,27 @@
         public SamplesService(ApplicationDbContext data)
             => this.data = data;
 
-        public IEnumerable<SampleInfoServiceModel> All(string userId)
-            => this.data
-              .Samples
-              .Where(s => s.UserId == userId)
-              .Select(s => new SampleInfoServiceModel
-              {
-                  Id = s.Id,
-                  Creation = s.Creation.ToString(DateTimeFormat),
-                  LastEdit = s.LastEdit.ToString(DateTimeFormat)
-              })
-              .ToList();
-        
-
-        public bool CheckOriginal(string sampleId, string newCode)
+        public void Save(string code, string userId)
         {
-            var sampleCode = this.data
-                .Samples
-                .Where(s => s.Id == sampleId)
-                .Select(s => s.Code)
-                .FirstOrDefault();
+            var sample = new Sample
+            {
+                Code = code,
+                UserId = userId,
+                Creation = DateTime.Now,
+                LastEdit = DateTime.Now
+            };
 
-            return sampleCode == newCode;
+            this.data
+                .Samples
+                .Add(sample);
+
+            this.data.SaveChanges();
         }
 
-        public void Edit(string sampleId, string code, string userId)
+        public void Edit(
+            string sampleId,
+            string code,
+            string userId)
         {
             var sample = this.data
                 .Samples
@@ -53,10 +49,20 @@
         }
 
         public bool IsSampleExist(string sampleId, string userId)
-           =>  this.data
-              .Samples
-              .Any(s => s.Id == sampleId && s.UserId == userId);
+            => this.data
+                .Samples
+                .Any(s => s.Id == sampleId && s.UserId == userId);
 
+        public bool CheckOriginal(string sampleId, string newCode)
+        {
+            var sampleCode = this.data
+                .Samples
+                .Where(s => s.Id == sampleId)
+                .Select(s => s.Code)
+                .FirstOrDefault();
+
+            return sampleCode == newCode;
+        }
 
         public SampleCodeServiceModel SampleCode(string sampleId)
             => this.data
@@ -68,20 +74,16 @@
                 })
                 .FirstOrDefault();
 
-
-        public void Save(string code, string userId)
-        {
-            var sample = new Sample
-            {
-                Code = code,
-                UserId = userId,
-                Creation = DateTime.Now,
-                LastEdit = DateTime.Now
-            };
-
-            this.data.Samples.Add(sample);
-
-            this.data.SaveChanges();
-        }
+        public IEnumerable<SampleInfoServiceModel> All(string userId)
+            => this.data
+                .Samples
+                .Where(s => s.UserId == userId)
+                .Select(s => new SampleInfoServiceModel
+                {
+                    Id = s.Id,
+                    Creation = s.Creation.ToString(DateTimeFormat),
+                    LastEdit = s.LastEdit.ToString(DateTimeFormat)
+                })
+                .ToList();
     }
 }
