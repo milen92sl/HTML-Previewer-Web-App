@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-<h1># HTML-Previewer-Web-App</h1>
-<p1>C# ASP.NET Core - MVC Web Application for previewing HTML code. Just put your code in the left table and it will be visualised in the right table. You can also save the code-samples and edit them.</p1>
-
-# HTML Previewer Application
-=======
 <h1>HTML Previewer-Web Application</h1>
 <p1>C# ASP.NET Core - MVC Web Application for previewing HTML code. Just put your code in the left table and it will be visualised in the right table. You can also save the code-samples and edit them.</p1>
->>>>>>> 0cf962595d1c25eabcd68a151d96a5a8555fa431
 
 ## Used Technologies and libraries:
 
