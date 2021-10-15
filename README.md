@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 <h1># HTML-Previewer-Web-App</h1>
-<p1>C# ASP.NET Core - MVC Web Application for previewing HTML code. Just put your code in the left table and i will be visualised in the right table. You can also save the code-samples and edit or delete them.</p1>
-=======
+<p1>C# ASP.NET Core - MVC Web Application for previewing HTML code. Just put your code in the left table and it will be visualised in the right table. You can also save the code-samples and edit them.</p1>
+
 # HTML Previewer Application
 
 An application that preview textarea-code as HTML. The different HTML samples are stored in a database and can be loaded for editing.
@@ -16,5 +15,7 @@ An application that preview textarea-code as HTML. The different HTML samples ar
 
 ## How to work with the app:
 
-1. Just check ur connection-string for the Database and run the app if it's fit in your configurations.
->>>>>>> b7bc7b091c29684f7fcc7d55088ae3efb487aa79
+1. Just check your connection-string for the Database and run the app if it's fit in your configurations.
+
+## How it looks:
+![Page-design_picture](https://user-images.githubusercontent.com/58393766/137407089-ef11a192-5c41-4e8a-a406-45f64a1372ca.png)

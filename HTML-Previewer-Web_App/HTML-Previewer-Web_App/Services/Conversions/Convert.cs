@@ -1,7 +1,5 @@
 ﻿namespace HTML_Previewer_Web_App.Services.Conversions
 {
-    using HTML_Previewer_Web_App.Data.Models;
-    using Newtonsoft.Json;
     using System.Text;
 
     public class Convert : IConvert
