@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/shared/layout.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    @await RenderSectionAsync("IndexStyles", required: false)
+    @await RenderSectionAsync("SamplesStyles", required: false)
+    @await RenderSectionAsync("IdentityFormStyles", required: false)
+</head>
+<body>
+    <partial name="_HeaderPartial" />
+    <div>
+        @if (TempData.ContainsKey(DataWebConstants.SuccessMessageKey))
+        {
+<div class="info-message success-message">
+    <p>@TempData[DataWebConstants.SuccessMessageKey]</p>
+</div>}
+
+        @if (TempData.ContainsKey(DataWebConstants.ErrorMessageKey))
+        {
+<div class="info-message error-message">
+    <p>@TempData[DataWebConstants.ErrorMessageKey]</p>
+</div>}
+
+        <div class="info-message hidden check-original-message">
+            <p></p>
+        </div>
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer-container">
+        <span> &copy;  @DateTime.Now.Year - @DataWebConstants.SystemName - All Rights Reserved. <button>@Html.ActionLink("Privacy Policy", "Privacy", "Home")</button></span>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/shared/infoMessage.js"></script>
+
+    @await RenderSectionAsync("IndexScript", required: false)
+    @await RenderSectionAsync("ValidationScript", required: false)
+</body>
+</html>
